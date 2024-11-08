@@ -25,5 +25,12 @@ resource "docker_container" "nginx" {
 Then, you can just define a value in the CLI.
 
 ```bash
-$ terraform apply -var "container_name=new_customized_name"
+terraform apply -var "container_name=new_customized_name"
+```
+
+### How to output data from the Terraform infrastructure
+Create a file `outputs.tf` and add the configuration that is in there. Then after the `terraform apply`, it is possible to get specific queried data from the provisioned infrastructured in STDOUT.
+
+```bash
+terraform output
 ```
