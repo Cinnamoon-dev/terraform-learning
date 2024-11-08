@@ -2,7 +2,7 @@
 A minimal Terraform application to learn how to use it and apply in projects later.
 
 ### How to use environment variables
-Create a `variables.tf` file and then declare the variable.
+Create a `variables.tf` file and then declare the variable. The file may have any name because all `.tf` files are loaded when calling `terraform apply`.
 
 ```tf
 variable "container_name" {
