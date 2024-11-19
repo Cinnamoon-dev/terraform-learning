@@ -7,6 +7,10 @@ terraform {
   }
 }
 
+locals {
+  http_port = 80
+}
+
 provider "docker" {}
 
 resource "docker_image" "nginx" {
@@ -19,7 +23,7 @@ resource "docker_container" "nginx" {
   name  = var.container_name
 
   ports {
-    internal = 80
+    internal = local.http_port
     external = 8080
   }
 }
