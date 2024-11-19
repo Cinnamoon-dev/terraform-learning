@@ -82,3 +82,19 @@ Create a file `outputs.tf` and add the configuration that is in there. Then afte
 ```bash
 terraform output
 ```
+
+### How to use Local Variables
+Use it when you are repeating the values too much, then you can use a local variable to prevent misspelling it.
+
+```h
+locals {
+  http_port = 80
+}
+
+...
+
+  ports {
+    internal = local.http_port
+    external = 8080
+  }
+```
