@@ -29,12 +29,14 @@ resource "aws_subnet" "my_internal_subnet_1" {
     vpc_id = aws_vpc.my_vpc.id
     cidr_block = "10.2.1.0/24"
     availability_zone = "sa-east-1a"
+    map_public_ip_on_launch = true
 }
 
 resource "aws_subnet" "my_public_subnet_1" {
     vpc_id = aws_vpc.my_vpc.id
     cidr_block = "10.2.2.0/24"
     availability_zone = "sa-east-1a"
+    map_public_ip_on_launch = true
 }
 
 resource "aws_subnet" "my_internal_subnet_2" {
@@ -47,6 +49,7 @@ resource "aws_subnet" "my_public_subnet_2" {
     vpc_id = aws_vpc.my_vpc.id
     cidr_block = "10.2.4.0/24"
     availability_zone = "sa-east-1b"
+    map_public_ip_on_launch = true
 }
 # Subnets
 # ------------------------------------------------------------- #
@@ -130,9 +133,8 @@ resource "aws_instance" "app_server" {
     ami = "ami-0f16d0d3ac759edfa"
     instance_type = "t2.micro"
 
-    
     subnet_id = aws_subnet.my_public_subnet_1.id
     vpc_security_group_ids = [aws_security_group.my_security_group.id]
 
-    user_data = "apt update && apt install nginx -y"
+    user_data = file("user_data.sh")
 }
