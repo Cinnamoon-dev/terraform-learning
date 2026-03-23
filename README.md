@@ -30,7 +30,7 @@ terraform apply -var "container_name=new_customized_name"
 You can also use a env file (*.auto.tfvars or terraform.tfvars).
 
 ```h
-# example.auto.tfvars
+// example.auto.tfvars
 container_name = "new_customized_name"
 ```
 
